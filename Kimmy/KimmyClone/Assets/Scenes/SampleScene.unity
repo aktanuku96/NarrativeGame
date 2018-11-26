@@ -347,8 +347,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 320, y: -101.5}
-  m_SizeDelta: {x: 620, y: 183}
+  m_AnchoredPosition: {x: 278, y: -101.5}
+  m_SizeDelta: {x: 536, y: 183}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1210636610
 MonoBehaviour:
@@ -461,7 +461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1920676232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,4 +489,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2051710137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2051710139}
+  - component: {fileID: 2051710138}
+  m_Layer: 0
+  m_Name: Scene Controller (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2051710138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2051710137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0557e7b9d06d446d3b4c59a303a881e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DanaColor: {r: 0.6117647, g: 0, b: 1, a: 0}
+  DanaMomColor: {r: 0.627451, g: 0.4392157, b: 1, a: 0}
+  KimmyColor: {r: 1, g: 0, b: 0.9254902, a: 0}
+  KimmyMomColor: {r: 1, g: 0.5613208, b: 0.8891297, a: 0}
+  DeanColor: {r: 1, g: 0.30874828, b: 0, a: 0}
+  AnthonyColor: {r: 1, g: 0, b: 0.24407196, a: 0}
+  AmberColor: {r: 0.09236373, g: 0.5188679, b: 0, a: 0}
+  DonnaColor: {r: 0.8301887, g: 0.7464928, b: 0, a: 0}
+  HaroldColor: {r: 0.031257268, g: 0, b: 0.6886792, a: 0}
+  JaneyColor: {r: 1, g: 0.6537612, b: 0, a: 0}
+  JimmyColor: {r: 0.4811321, g: 0, b: 0.012470903, a: 0}
+  LindaColor: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 0}
+  ColorNum: 0
+  inkJSONAsset: {fileID: 4900000, guid: 129d40bcc263b4153b313b976139cf2e, type: 3}
+  canvas: {fileID: 90179333}
+  textPrefab: {fileID: 11456674, guid: 1aab6ef84d87c416f8f0b3e1ef3d77d2, type: 2}
+  buttonPrefab: {fileID: 11455116, guid: 37c108a6c38964f79a6621eccb33ddc1, type: 2}
+--- !u!4 &2051710139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2051710137}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 456, y: 470, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

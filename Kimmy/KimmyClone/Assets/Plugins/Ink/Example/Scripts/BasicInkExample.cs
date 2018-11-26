@@ -5,8 +5,7 @@ using Ink.Runtime;
 
 // This is a super bare bones example of how to play and display a ink story in Unity.
 public class BasicInkExample : MonoBehaviour {
-	
-	void Awake () {
+    void Awake () {
 		// Remove the default message
 		RemoveChildren();
 		StartStory();
@@ -31,8 +30,8 @@ public class BasicInkExample : MonoBehaviour {
 			string text = story.Continue ();
 			// This removes any white space from the text.
 			text = text.Trim();
-			// Display the text on screen!
-			CreateContentView(text);
+            // Display the text on screen!
+            CreateContentView(text);
 		}
 
 		// Display all the choices, if there are any!
@@ -63,9 +62,11 @@ public class BasicInkExample : MonoBehaviour {
 
 	// Creates a button showing the choice text
 	void CreateContentView (string text) {
+
+
 		Text storyText = Instantiate (textPrefab) as Text;
-		storyText.text = text;
-		storyText.transform.SetParent (canvas.transform, false);
+        storyText.text = text;
+        storyText.transform.SetParent (canvas.transform, false);
 	}
 
 	// Creates a button showing the choice text

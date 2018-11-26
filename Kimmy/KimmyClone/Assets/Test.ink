@@ -298,22 +298,79 @@ Kimmy: Oh no...
 Dana: It’s ok! Kimmy, let’s run to the store and buy some game pieces! We’ll be right back!
 +[Map]->WhereToGoNext
 
+===EndTheDay===
+Dana: Mrs. Munro? I'm here to drop Kimmy off.
+Kimmy's Mom: Welcome back, girls.
++[Tell her how it went] -> Today
+=Today
+Dana: We had a good time today!
+Kimmy's Mom: There you are Kimmy. Wonderful Dana, thank you so much… you’re such a great help. I really…
+Kimmy's Mom: Oh, where is it? Work was so busy but I swear I didn't forget...
+Kimmy's Mom: Here we go. Your quarter, Dana.
++[Take Quarter] -> GotPaid
+=GotPaid
+Dana: Thank you so much! May I come again tomorrow?
+Kimmy: Yes!
+Kimmy's Mom: It would be a great help, if you could.
++[Say Bye] -> Bye
+=Bye
+Dana: Ok, see you tomorrow!
++[Mom?] -> MomSurprise
+=MomSurprise
+Mom: There you are.
+Dana: Mom!
+Mom: I was just stopping by the corner store to grab some milk. Are you done babysitting Kimmy?
+Dana: Yes!
+Kimmy's Mom: Hello, Mrs. Navarro. I’ll be going inside now. Let's go, Kimmy. You need to have some dinner.
+Mom: Have a nice evening.
++[Walk home] -> WalkHome
+=WalkHome
+Dana: I’ll walk home with you, mom.
++[Talk about Kimmy's rope] -> RopeQ
+=RopeQ
+Dana: ...Mom, when I picked Kimmy up this morning, she had a rope tied around her. Is that… normal?
+Mom: Oh, was she tied to the doorknob?
+Dana: She was tied to the porch.
+Mom: My mom used to tie me to the doorknob so she could focus on making dinner.
+Mom: It’s a little old-fashioned.
+Dana: Oh…
++[Weird but okay?] -> Weird
+=Weird
+Dana: You never tied me up, though?
+Mom: ...well, I suppose I never worried about you running off.
+Mom: My mom used to worry I’d get into trouble, so when I was Kimmy’s age she’d keep me hooked to the doorknob if there was no one to keep an eye on me.
+Dana: Wow… that's kinda weird.
+Mom: A harness is a cheap babysitter.
++[Sure...] ->MomsAWeirdo
+=MomsAWeirdo
+Dana: I guess so... well, I'm definitely a better babysitter than a harness.
+Mom: Come on, let’s head home. I’m glad you have a job now. Keeping busy is good for a girl your age.
++[Worry] ->Worry
+=Worry
+Dana: I hope I can be a good babysitter. Kimmy is kind of quiet, so it’s hard to tell if she’s having fun.
+Mom: You’ll do fine.
+->End
+
 ===Downtown===
+    You see Anthony and Amber talking in the corner, and Jimmy reading by the bus stop.
     + [Let's go talk to Anthony and Amber!] -> AnthonyAndAmber
     + [Let's go talk to Jimmy!] -> Jimmy
     + [Map] -> WhereToGoNext
 
 ===Home===
+    You see Dana's Mom standing by the mailbox, and Harold standing in front of Dana's house.
     + [Let's go talk to Harold!] -> Harold
     + [Let's go see your mom Dana!] -> Mom
     + [Map] -> WhereToGoNext
 
 ===KimmysHouse===
+    You see Dean hanging out of the store window, and Donna in front of Kimmy's house.
     + [Let's go to the Store!] ->StoreClerkIntro
     + [Let's go talk to Donna!] -> Donna
     + [Map] -> WhereToGoNext
 
 ===PlayGround===
+    You see Linda by the swings and Janey by the sandbox.
     + [Let's go talk to Janey!] ->Janey
     + [Let's go talk to Linda!] -> Linda
     + [Map] ->WhereToGoNext
@@ -324,4 +381,6 @@ So Kimmy, where would you like to go now?
     + [Home] ->  Home
     + [Kimmy's House] -> KimmysHouse
     + [PlayGround] -> PlayGround
+    
+===End===
 ->DONE
