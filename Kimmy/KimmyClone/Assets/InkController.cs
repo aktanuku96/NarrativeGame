@@ -19,6 +19,8 @@ public class InkController : MonoBehaviour {
     public Color LindaColor;
 
     public int ColorNum = 0;
+
+    public GameObject panel;
     void Awake()
     {
         // Remove the default message
@@ -53,12 +55,14 @@ public class InkController : MonoBehaviour {
             if (text.Contains("Dana:"))
             {
                 ColorNum = 1;
-               //Debug.Log("Dana");
+                //DanaColor = new Color(156, 0, 255);
+                //Debug.Log("Dana");
             }
 
             else if (text.Contains("Mom:"))
             {
                 ColorNum = 2;
+               // DanaMomColor = new Color(160, 112, 255);
                 //Debug.Log("Mom");
             }
 
@@ -159,74 +163,74 @@ public class InkController : MonoBehaviour {
         if (ColorNum == 1)
         {
             //Debug.Log("Dana");
-            DanaColor = new Color(156, 0, 255);
+            //DanaColor = new Color(156, 0, 255, 255);
             storyText.color = DanaColor;
-            //ColorNum = 0;
+            ColorNum = 0;
         }
         if (ColorNum == 2)
         {
             //Debug.Log("Mom");
-            DanaMomColor = new Color(160, 112, 255);
+            //DanaMomColor = new Color(160, 112, 255, 255);
             storyText.color = DanaMomColor;
             //ColorNum = 0;
         }
         if (ColorNum == 3)
         {
-            KimmyColor = new Color(255, 0, 236);
+            //KimmyColor = new Color(255f, 0f, 236f);
             storyText.color = KimmyColor;
             ColorNum = 0;
         }
         if (ColorNum == 4)
         {
-            KimmyMomColor = new Color(255, 143, 227);
+            //KimmyMomColor = new Color(255, 143, 227);
             storyText.color = KimmyMomColor;
             ColorNum = 0;
         }
         else if (ColorNum == 5)
         {
-            DeanColor = new Color(255, 79, 0);
+           // DeanColor = new Color(255, 79, 0);
             storyText.color = DeanColor;
             ColorNum = 0;
         }
         else if (ColorNum == 6)
         {
-            AnthonyColor = new Color(255, 0, 62);
+            //AnthonyColor = new Color(255, 0, 62);
             storyText.color = AnthonyColor;
             ColorNum = 0;
         }
         else if (ColorNum == 7)
         {
-            AmberColor = new Color(24, 132, 0);
+            //AmberColor = new Color(24, 132, 0);
             storyText.color = AmberColor;
             ColorNum = 0;
         }
         else if (ColorNum == 8)
         {
-            DonnaColor = new Color(212, 190, 0);
+            //DonnaColor = new Color(212, 190, 0);
             storyText.color = DonnaColor;
             //ColorNum = 0;
         }
         else if (ColorNum == 9)
         {
-            HaroldColor = new Color(8, 0, 176);
+            //HaroldColor = new Color(8, 0, 176);
             storyText.color = HaroldColor;
             ColorNum = 0;
         }
         else if (ColorNum == 10)
         {
-            JaneyColor = new Color(255, 167, 0);
+            //JaneyColor = new Color(255, 167, 0);
             storyText.color = JaneyColor;
             ColorNum = 0;
         }
         else if (ColorNum == 11)
         {
-            JimmyColor = new Color(123, 0, 3);
+            //JimmyColor = new Color(123, 0, 3);
             storyText.color = JimmyColor;
             ColorNum = 0;
         }
         else if (ColorNum == 12)
         {
-            LindaColor = new Color(109, 109, 109);
+            //LindaColor = new Color(109, 109, 109);
             storyText.color = LindaColor;
             ColorNum = 0;
         }

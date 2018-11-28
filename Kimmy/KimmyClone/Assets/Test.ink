@@ -3,7 +3,7 @@ Your mom is standing on the Porch
 *[Talk to Mom]-> IntroPart1
 
 === IntroPart1===
-Dana: Mom! Look! God sent me a baby!
+Dana: Mom! Look! God sent me a baby! 
 Mom: ...Excuse me?
 Dana: Her name is Kimmy!
 Kimmy: ...
@@ -32,7 +32,7 @@ Dana: ...
 *[Looks at Mom] -> TakeKimmyHome
 =TakeKimmyHome
 
-It’s ok dear, let’s go to your house Kimmy… you said it’s on Ferry Street? Your parents are probably worried.
+Mom: It’s ok dear, let’s go to your house Kimmy… you said it’s on Ferry Street? Your parents are probably worried.
 
 *[Go to Kimmy's House!]->IntroPart2
 
