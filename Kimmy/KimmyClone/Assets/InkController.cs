@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
 
-public class InkController : MonoBehaviour {
+public class InkController : MonoBehaviour
+{
     public Color DanaColor;
     public Color DanaMomColor;
     public Color KimmyColor;
@@ -18,51 +19,52 @@ public class InkController : MonoBehaviour {
     public Color JimmyColor;
     public Color LindaColor;
 
+    public AudioClip click;
+    public AudioSource source;
+
+    [SerializeField] private TextAsset _inkJsonAsset;
+    [SerializeField] private Story story;
+
+    [SerializeField]
+    private Canvas canvas;
+
+    // UI Prefabs
+    [SerializeField]
+    private Text textPrefab;
+    [SerializeField]
+    private Button buttonPrefab;
+
     public int ColorNum = 0;
 
-    public GameObject panel;
-    void Awake()
+    public GameObject buttonPanel;
+    public GameObject textPanel;
+
+    private void Start()
     {
-        // Remove the default message
+        story = new Story(_inkJsonAsset.text);
         RemoveChildren();
-        StartStory();
     }
 
-    // Creates a new Story object with the compiled story which we can then play!
-    void StartStory()
+    private void Update()
     {
-        story = new Story(inkJSONAsset.text);
-        RefreshView();
-    }
-
-    // This is the main function called every time the story changes. It does a few things:
-    // Destroys all the old content and choices.
-    // Continues over all the lines of text, then displays all the choices. If there are no choices, the story is finished!
-    void RefreshView()
-    {
-        // Remove all the UI on screen
-        RemoveChildren();
-
-        // Read all the content until we can't continue any more
-        while (story.canContinue)
+        if (Input.GetKeyDown(KeyCode.Space) && story.canContinue)
         {
-            //Debug.Log("This is working");
-            // Continue gets the next line of the story
+            RemoveChildren();
             string text = story.Continue();
-            // This removes any white space from the text.
             text = text.Trim();
 
             if (text.Contains("Dana:"))
             {
+                Debug.Log("Did you see Dana?");
                 ColorNum = 1;
                 //DanaColor = new Color(156, 0, 255);
                 //Debug.Log("Dana");
             }
 
-            else if (text.Contains("Mom:"))
+            else if (text.Contains("Dana's Mom:"))
             {
                 ColorNum = 2;
-               // DanaMomColor = new Color(160, 112, 255);
+                // DanaMomColor = new Color(160, 112, 255);
                 //Debug.Log("Mom");
             }
 
@@ -116,43 +118,43 @@ public class InkController : MonoBehaviour {
                 ColorNum = 12;
             }
 
-            // Display the text on screen!
-            CreateContentView(text);
+        
+
+        CreateContentView(text);
+            //Debug.Log("Did you get here?");
+            if (story.currentChoices.Count > 0)
+            {
+                // Debug.Log("How about here?");
+                for (int i = 0; i < story.currentChoices.Count; i++)
+                {
+                    Choice choice = story.currentChoices[i];
+                    Button button = CreateChoiceView(choice.text.Trim());
+                    // Tell the button what to do when we press it
+                    button.onClick.AddListener(delegate
+                    {
+                        source.PlayOneShot(click);
+                        OnClickChoiceButton(choice);
+                    });
+                }
+            }
+            else { return; }
         }
 
-        // Display all the choices, if there are any!
-        if (story.currentChoices.Count > 0)
-        {
-            for (int i = 0; i < story.currentChoices.Count; i++)
-            {
-                Choice choice = story.currentChoices[i];
-                Button button = CreateChoiceView(choice.text.Trim());
-                // Tell the button what to do when we press it
-                button.onClick.AddListener(delegate {
-                    OnClickChoiceButton(choice);
-                });
-            }
-        }
-        // If we've read all the content and there's no choices, the story is finished!
-        else
-        {
-            Button choice = CreateChoiceView("End of story.\nRestart?");
-            choice.onClick.AddListener(delegate {
-                StartStory();
-            });
-        }
     }
 
     // When we click the choice button, tell the story to choose that choice!
     void OnClickChoiceButton(Choice choice)
     {
         story.ChooseChoiceIndex(choice.index);
-        RefreshView();
+        //RefreshView();
+        //Update();
+        RemoveChildren();
     }
 
     // Creates a button showing the choice text
     void CreateContentView(string text)
     {
+        //Debug.Log("Hi are you creating content?");
         Text storyText = Instantiate(textPrefab) as Text;
         storyText.text = text;
 
@@ -162,80 +164,78 @@ public class InkController : MonoBehaviour {
 
         if (ColorNum == 1)
         {
-            //Debug.Log("Dana");
-            //DanaColor = new Color(156, 0, 255, 255);
+            //DanaColor = 156, 0, 255, 255;
             storyText.color = DanaColor;
             ColorNum = 0;
         }
         if (ColorNum == 2)
         {
-            //Debug.Log("Mom");
-            //DanaMomColor = new Color(160, 112, 255, 255);
+            //DanaMomColor = 160, 112, 255, 255;
             storyText.color = DanaMomColor;
             //ColorNum = 0;
         }
         if (ColorNum == 3)
         {
-            //KimmyColor = new Color(255f, 0f, 236f);
+            //KimmyColor = 255, 0, 236, 255;
             storyText.color = KimmyColor;
             ColorNum = 0;
         }
         if (ColorNum == 4)
         {
-            //KimmyMomColor = new Color(255, 143, 227);
+            //KimmyMomColor = 255, 143, 227, 255;
             storyText.color = KimmyMomColor;
             ColorNum = 0;
         }
         else if (ColorNum == 5)
         {
-           // DeanColor = new Color(255, 79, 0);
+            //DeanColor = 255, 79, 0, 255;
             storyText.color = DeanColor;
             ColorNum = 0;
         }
         else if (ColorNum == 6)
         {
-            //AnthonyColor = new Color(255, 0, 62);
+            //AnthonyColor = 255, 0, 62, 255;
             storyText.color = AnthonyColor;
             ColorNum = 0;
         }
         else if (ColorNum == 7)
         {
-            //AmberColor = new Color(24, 132, 0);
+            //AmberColor = 24, 132, 0, 255;
             storyText.color = AmberColor;
             ColorNum = 0;
         }
         else if (ColorNum == 8)
         {
-            //DonnaColor = new Color(212, 190, 0);
+            //DonnaColor = 212, 190, 0, 255;
             storyText.color = DonnaColor;
             //ColorNum = 0;
         }
         else if (ColorNum == 9)
         {
-            //HaroldColor = new Color(8, 0, 176);
+            //HaroldColor = 8, 0, 176, 255;
             storyText.color = HaroldColor;
             ColorNum = 0;
         }
         else if (ColorNum == 10)
         {
-            //JaneyColor = new Color(255, 167, 0);
+            //JaneyColor = 0, 255, 255, 255;
             storyText.color = JaneyColor;
             ColorNum = 0;
         }
         else if (ColorNum == 11)
         {
-            //JimmyColor = new Color(123, 0, 3);
+            //JimmyColor = 123, 0, 3, 255;
             storyText.color = JimmyColor;
             ColorNum = 0;
         }
         else if (ColorNum == 12)
         {
-            //LindaColor = new Color(109, 109, 109);
+            //LindaColor = 109, 109, 109, 255;
             storyText.color = LindaColor;
             ColorNum = 0;
         }
 
-        storyText.transform.SetParent(canvas.transform, false);
+        storyText.transform.SetParent(textPanel.transform, false);
     }
 
     // Creates a button showing the choice text
@@ -243,7 +243,7 @@ public class InkController : MonoBehaviour {
     {
         // Creates the button from a prefab
         Button choice = Instantiate(buttonPrefab) as Button;
-        choice.transform.SetParent(canvas.transform, false);
+        choice.transform.SetParent(buttonPanel.transform, false);
 
         // Gets the text from the button prefab
         Text choiceText = choice.GetComponentInChildren<Text>();
@@ -259,23 +259,18 @@ public class InkController : MonoBehaviour {
     // Destroys all the children of this gameobject (all the UI)
     void RemoveChildren()
     {
-        int childCount = canvas.transform.childCount;
+        int childCount = textPanel.transform.childCount;
         for (int i = childCount - 1; i >= 0; --i)
         {
-            GameObject.Destroy(canvas.transform.GetChild(i).gameObject);
+            GameObject.Destroy(textPanel.transform.GetChild(i).gameObject);
         }
+        int childCountButton = buttonPanel.transform.childCount;
+        for (int i = childCountButton - 1; i >= 0; --i)
+        {
+            GameObject.Destroy(buttonPanel.transform.GetChild(i).gameObject);
+        }
+
     }
 
-    [SerializeField]
-    private TextAsset inkJSONAsset;
-    private Story story;
 
-    [SerializeField]
-    private Canvas canvas;
-
-    // UI Prefabs
-    [SerializeField]
-    private Text textPrefab;
-    [SerializeField]
-    private Button buttonPrefab;
 }

@@ -4,7 +4,7 @@ Your mom is standing on the Porch
 
 === IntroPart1===
 Dana: Mom! Look! God sent me a baby! 
-Mom: ...Excuse me?
+Dana's Mom: ...Excuse me?
 Dana: Her name is Kimmy!
 Kimmy: ...
 
@@ -12,17 +12,17 @@ Kimmy: ...
 //breaks in the conversation
 =DanasMomCorrectsDana
 
-Mom: That… No, Dana. God did not send you a baby.
+Dana's Mom: That… No, Dana. God did not send you a baby.
 Dana: What do you mean…? You said God sends people babies sometimes! You told me that.
-Mom: Well… nevermind what I said. It doesn’t apply to you. God isn’t about to send you a baby anytime soon, trust me.
+Dana's Mom: Well… nevermind what I said. It doesn’t apply to you. God isn’t about to send you a baby anytime soon, trust me.
 Dana: What! Why? I wished for a baby, and he granted my wish. Isn’t it obvious?
-Mom: Where did you find this little girl? Honey, where’s your house?
+Dana's Mom: Where did you find this little girl? Honey, where’s your house?
 Kimmy: ...
 
 *[Hm..Kimmy?] ->DivertsConvoToKimmy//breaks in the conversation
 =DivertsConvoToKimmy
 
-Mom: Kimmy, can you tell me where your parents are?
+Dana's Mom: Kimmy, can you tell me where your parents are?
 Kimmy: I can go home later if I want…
 Dana: Well maybe God didn’t send her, but she came out of nowhere! Kimmy, you just… appeared, right? Where did you come from?
 Kimmy: Ferry Street... I untied myself from the porch so I could go for a walk…
@@ -32,7 +32,7 @@ Dana: ...
 *[Looks at Mom] -> TakeKimmyHome
 =TakeKimmyHome
 
-Mom: It’s ok dear, let’s go to your house Kimmy… you said it’s on Ferry Street? Your parents are probably worried.
+Dana's Mom: It’s ok dear, let’s go to your house Kimmy… you said it’s on Ferry Street? Your parents are probably worried.
 
 *[Go to Kimmy's House!]->IntroPart2
 
@@ -58,10 +58,10 @@ Kimmy's Mom: I’ve been looking for a babysitter, actually. Her grandma was hel
 Dana: Wow! Yes, please! I’d love to!
 Kimmy's Mom: My work schedule is a little… hectic. It’d be great to have you by in the morning.
 Dana: I’ll be here first thing! Wow, I didn’t expect to land a job today. Thanks so much!
-Mom: Well, that all sounds good to me. A summer job will be a nice way to keep busy. Now then, let’s leave this nice family to their dinner.
+Dana's Mom: Well, that all sounds good to me. A summer job will be a nice way to keep busy. Now then, let’s leave this nice family to their dinner.
 Dana: Ok. Bye bye Kimmy, and Mrs...?
 Kimmy's Mom: Mrs. Munro. Again, thank you for giving Kimmy a hand. It was nice meeting you, Mrs. Navarro.
-Mom: Likewise.
+Dana's Mom: Likewise.
 Kimmy: Bye bye.
 
 ->TheNextDay
@@ -278,16 +278,16 @@ Linda: I guess so. I was playing with Donna earlier, but I could play some more.
 +[Map] -> WhereToGoNext
 
 ===Mom===
-Mom: What’s wrong, Dana? Aren’t you supposed to be out with Kimmy?
+Dana's Mom: What’s wrong, Dana? Aren’t you supposed to be out with Kimmy?
 Dana: Kimmy and I just wanted to stop by, mom.
-Mom: Fine, well, I think you should be out getting some exercise.
+Dana's Mom: Fine, well, I think you should be out getting some exercise.
 Dana: We’re walking everywhere!
-Mom: What about you, Kimmy? Is Dana treating you ok?
+Dana's Mom: What about you, Kimmy? Is Dana treating you ok?
 Kimmy: Yes… we’re trying to play and make friends with the neighborhood kids.
-Mom: That’s good. It must be nice to be out of that harness. Did your mom have that on you because she was busy in the house?
+Dana's Mom: That’s good. It must be nice to be out of that harness. Did your mom have that on you because she was busy in the house?
 Kimmy: My mom ties me to the banister when she’s working and Dad’s watching me. She says she doesn’t trust him to keep his eye out.
-Mom: Ah, I see. Well, I’m glad Dana can help.
-Mom: Anyways, I think I had something for you two…
+Dana's Mom: Ah, I see. Well, I’m glad Dana can help.
+Dana's Mom: Anyways, I think I had something for you two…
 +[Take the gift] -> ByeMom
 =ByeMom
 +[Map]->WhereToGoNext
@@ -317,38 +317,38 @@ Kimmy's Mom: It would be a great help, if you could.
 Dana: Ok, see you tomorrow!
 +[Mom?] -> MomSurprise
 =MomSurprise
-Mom: There you are.
+Dana's Mom: There you are.
 Dana: Mom!
-Mom: I was just stopping by the corner store to grab some milk. Are you done babysitting Kimmy?
+Dana's Mom: I was just stopping by the corner store to grab some milk. Are you done babysitting Kimmy?
 Dana: Yes!
 Kimmy's Mom: Hello, Mrs. Navarro. I’ll be going inside now. Let's go, Kimmy. You need to have some dinner.
-Mom: Have a nice evening.
+Dana's Mom: Have a nice evening.
 +[Walk home] -> WalkHome
 =WalkHome
 Dana: I’ll walk home with you, mom.
 +[Talk about Kimmy's rope] -> RopeQ
 =RopeQ
 Dana: ...Mom, when I picked Kimmy up this morning, she had a rope tied around her. Is that… normal?
-Mom: Oh, was she tied to the doorknob?
+Dana's Mom: Oh, was she tied to the doorknob?
 Dana: She was tied to the porch.
-Mom: My mom used to tie me to the doorknob so she could focus on making dinner.
-Mom: It’s a little old-fashioned.
+Dana's Mom: My mom used to tie me to the doorknob so she could focus on making dinner.
+Dana's Mom: It’s a little old-fashioned.
 Dana: Oh…
 +[Weird but okay?] -> Weird
 =Weird
 Dana: You never tied me up, though?
-Mom: ...well, I suppose I never worried about you running off.
-Mom: My mom used to worry I’d get into trouble, so when I was Kimmy’s age she’d keep me hooked to the doorknob if there was no one to keep an eye on me.
+Dana's Mom: ...well, I suppose I never worried about you running off.
+Dana's Mom: My mom used to worry I’d get into trouble, so when I was Kimmy’s age she’d keep me hooked to the doorknob if there was no one to keep an eye on me.
 Dana: Wow… that's kinda weird.
-Mom: A harness is a cheap babysitter.
+Dana's Mom: A harness is a cheap babysitter.
 +[Sure...] ->MomsAWeirdo
 =MomsAWeirdo
 Dana: I guess so... well, I'm definitely a better babysitter than a harness.
-Mom: Come on, let’s head home. I’m glad you have a job now. Keeping busy is good for a girl your age.
+Dana's Mom: Come on, let’s head home. I’m glad you have a job now. Keeping busy is good for a girl your age.
 +[Worry] ->Worry
 =Worry
 Dana: I hope I can be a good babysitter. Kimmy is kind of quiet, so it’s hard to tell if she’s having fun.
-Mom: You’ll do fine.
+Dana's Mom: You’ll do fine.
 ->End
 
 ===Downtown===
@@ -381,6 +381,7 @@ So Kimmy, where would you like to go now?
     + [Home] ->  Home
     + [Kimmy's House] -> KimmysHouse
     + [PlayGround] -> PlayGround
+    + [End Day] -> EndTheDay
     
 ===End===
 ->DONE
