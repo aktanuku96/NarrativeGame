@@ -54,42 +54,19 @@ public class InkController : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
-            addText();
-
-            
-        //Debug.Log("Did you get here?");
-        if (story.currentChoices.Count > 0)
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            //choiceThere = true;
-            //if (choiceThere)
-            //{
-            // Debug.Log("How about here?");
-            //Debug.Log(story.currentChoices.Count);
-                
-            for (int i = 0; i < story.currentChoices.Count; i++)
-            {
-                //Debug.Log(story.currentChoices.Count);
+            addText();
+        }
+            
+        if(!choiceThere){
 
-                Choice choice = story.currentChoices[i];
-               
-                if (!choiceThere){
-                    
-                    Button button = CreateChoiceView(choice.text.Trim());
-                    //Debug.Log(story.currentChoices.Count);
-                    // Tell the button what to do when we press it
+            ShowChoices();
 
-                    button.onClick.AddListener(delegate
-                    {
-                        source.PlayOneShot(click);
-                        OnClickChoiceButton(choice);
+        }
 
-                    });
-                    // }
+        //Debug.Log("Did you get here?");
 
-                }
-            }
-         }
             
         else { return; }
      }
@@ -177,6 +154,38 @@ void addText()
 
     void ShowChoices(){
 
+        if (story.currentChoices.Count > 0)
+        {
+            //choiceThere = true;
+            //if (choiceThere)
+            //{
+            // Debug.Log("How about here?");
+            //Debug.Log(story.currentChoices.Count);
+
+            for (int i = 0; i < story.currentChoices.Count; i++)
+            {
+                //Debug.Log(story.currentChoices.Count);
+
+                Choice choice = story.currentChoices[i];
+
+                //if (!choiceThere)
+                //{
+
+                    Button button = CreateChoiceView(choice.text.Trim());
+                    //Debug.Log(story.currentChoices.Count);
+                    // Tell the button what to do when we press it
+
+                    button.onClick.AddListener(delegate
+                    {
+                        source.PlayOneShot(click);
+                        OnClickChoiceButton(choice);
+
+                    });
+                    // }
+
+                //}
+            }
+        }
     }
 
     // When we click the choice button, tell the story to choose that choice!
