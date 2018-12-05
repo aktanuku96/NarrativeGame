@@ -34,111 +34,148 @@ public class InkController : MonoBehaviour
     [SerializeField]
     private Button buttonPrefab;
 
+
+    private bool choiceThere;
+    //private string text;
     public int ColorNum = 0;
 
     public GameObject buttonPanel;
     public GameObject textPanel;
 
+    public Image imageScript;
+
+
     private void Start()
     {
         story = new Story(_inkJsonAsset.text);
         RemoveChildren();
+
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && story.canContinue)
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+            addText();
+
+            
+        //Debug.Log("Did you get here?");
+        if (story.currentChoices.Count > 0)
         {
-            RemoveChildren();
-            string text = story.Continue();
-            text = text.Trim();
-
-            if (text.Contains("Dana:"))
+            //choiceThere = true;
+            //if (choiceThere)
+            //{
+            // Debug.Log("How about here?");
+            //Debug.Log(story.currentChoices.Count);
+                
+            for (int i = 0; i < story.currentChoices.Count; i++)
             {
-                Debug.Log("Did you see Dana?");
-                ColorNum = 1;
-                //DanaColor = new Color(156, 0, 255);
-                //Debug.Log("Dana");
-            }
+                //Debug.Log(story.currentChoices.Count);
 
-            else if (text.Contains("Dana's Mom:"))
-            {
-                ColorNum = 2;
-                // DanaMomColor = new Color(160, 112, 255);
-                //Debug.Log("Mom");
-            }
-
-            else if (text.Contains("Kimmy:"))
-            {
-                ColorNum = 3;
-            }
-
-            else if (text.Contains("Kimmy's Mom:"))
-            {
-                ColorNum = 4;
-            }
-
-            else if (text.Contains("Dean:"))
-            {
-                ColorNum = 5;
-            }
-
-            else if (text.Contains("Anthony:"))
-            {
-                ColorNum = 6;
-            }
-
-            else if (text.Contains("Amber:"))
-            {
-                ColorNum = 7;
-            }
-
-            else if (text.Contains("Donna:"))
-            {
-                ColorNum = 8;
-            }
-
-            else if (text.Contains("Harold:"))
-            {
-                ColorNum = 9;
-            }
-
-            else if (text.Contains("Janey:"))
-            {
-                ColorNum = 10;
-            }
-
-            else if (text.Contains("Jimmy:"))
-            {
-                ColorNum = 11;
-            }
-
-            else if (text.Contains("Linda:"))
-            {
-                ColorNum = 12;
-            }
-
-        
-
-        CreateContentView(text);
-            //Debug.Log("Did you get here?");
-            if (story.currentChoices.Count > 0)
-            {
-                // Debug.Log("How about here?");
-                for (int i = 0; i < story.currentChoices.Count; i++)
-                {
-                    Choice choice = story.currentChoices[i];
+                Choice choice = story.currentChoices[i];
+               
+                if (!choiceThere){
+                    
                     Button button = CreateChoiceView(choice.text.Trim());
+                    //Debug.Log(story.currentChoices.Count);
                     // Tell the button what to do when we press it
+
                     button.onClick.AddListener(delegate
                     {
                         source.PlayOneShot(click);
                         OnClickChoiceButton(choice);
+
                     });
+                    // }
+
                 }
             }
-            else { return; }
+         }
+            
+        else { return; }
+     }
+
+
+
+
+void addText()
+{
+    if (story.canContinue)
+    {
+        RemoveChildren();
+        string text = story.Continue();
+        text = text.Trim();
+
+        if (text.Contains("Dana:"))
+        {
+            Debug.Log("Did you see Dana?");
+            ColorNum = 1;
+            //DanaColor = new Color(156, 0, 255);
+            //Debug.Log("Dana");
         }
+
+        else if (text.Contains("Dana's Mom:"))
+        {
+            ColorNum = 2;
+            // DanaMomColor = new Color(160, 112, 255);
+            //Debug.Log("Mom");
+        }
+
+        else if (text.Contains("Kimmy:"))
+        {
+            ColorNum = 3;
+        }
+
+        else if (text.Contains("Kimmy's Mom:"))
+        {
+            ColorNum = 4;
+        }
+
+        else if (text.Contains("Dean:"))
+        {
+            ColorNum = 5;
+        }
+
+        else if (text.Contains("Anthony:"))
+        {
+            ColorNum = 6;
+        }
+
+        else if (text.Contains("Amber:"))
+        {
+            ColorNum = 7;
+        }
+
+        else if (text.Contains("Donna:"))
+        {
+            ColorNum = 8;
+        }
+
+        else if (text.Contains("Harold:"))
+        {
+            ColorNum = 9;
+        }
+
+        else if (text.Contains("Janey:"))
+        {
+            ColorNum = 10;
+        }
+
+        else if (text.Contains("Jimmy:"))
+        {
+            ColorNum = 11;
+        }
+
+        else if (text.Contains("Linda:"))
+        {
+            ColorNum = 12;
+        }
+
+        CreateContentView(text);
+
+    }
+}
+
+    void ShowChoices(){
 
     }
 
@@ -146,9 +183,13 @@ public class InkController : MonoBehaviour
     void OnClickChoiceButton(Choice choice)
     {
         story.ChooseChoiceIndex(choice.index);
-        //RefreshView();
-        //Update();
-        RemoveChildren();
+
+        //string text = story.Continue();
+        //text = text.Trim();
+        //CreateContentView(text);
+        //RemoveChildren();
+        addText();
+        choiceThere = false;
     }
 
     // Creates a button showing the choice text
@@ -165,73 +206,74 @@ public class InkController : MonoBehaviour
         if (ColorNum == 1)
         {
             //DanaColor = 156, 0, 255, 255;
-            storyText.color = DanaColor;
+            //storyText.color = DanaColor;
+            imageScript.color = DanaColor;
             ColorNum = 0;
         }
         if (ColorNum == 2)
         {
             //DanaMomColor = 160, 112, 255, 255;
-            storyText.color = DanaMomColor;
+            imageScript.color = DanaMomColor;
             //ColorNum = 0;
         }
         if (ColorNum == 3)
         {
             //KimmyColor = 255, 0, 236, 255;
-            storyText.color = KimmyColor;
+            imageScript.color = KimmyColor;
             ColorNum = 0;
         }
         if (ColorNum == 4)
         {
             //KimmyMomColor = 255, 143, 227, 255;
-            storyText.color = KimmyMomColor;
+            imageScript.color = KimmyMomColor;
             ColorNum = 0;
         }
         else if (ColorNum == 5)
         {
             //DeanColor = 255, 79, 0, 255;
-            storyText.color = DeanColor;
+            imageScript.color = DeanColor;
             ColorNum = 0;
         }
         else if (ColorNum == 6)
         {
             //AnthonyColor = 255, 0, 62, 255;
-            storyText.color = AnthonyColor;
+            imageScript.color = AnthonyColor;
             ColorNum = 0;
         }
         else if (ColorNum == 7)
         {
             //AmberColor = 24, 132, 0, 255;
-            storyText.color = AmberColor;
+            imageScript.color = AmberColor;
             ColorNum = 0;
         }
         else if (ColorNum == 8)
         {
             //DonnaColor = 212, 190, 0, 255;
-            storyText.color = DonnaColor;
+            imageScript.color = DonnaColor;
             //ColorNum = 0;
         }
         else if (ColorNum == 9)
         {
             //HaroldColor = 8, 0, 176, 255;
-            storyText.color = HaroldColor;
+            imageScript.color = HaroldColor;
             ColorNum = 0;
         }
         else if (ColorNum == 10)
         {
             //JaneyColor = 0, 255, 255, 255;
-            storyText.color = JaneyColor;
+            imageScript.color = JaneyColor;
             ColorNum = 0;
         }
         else if (ColorNum == 11)
         {
             //JimmyColor = 123, 0, 3, 255;
-            storyText.color = JimmyColor;
+            imageScript.color = JimmyColor;
             ColorNum = 0;
         }
         else if (ColorNum == 12)
         {
             //LindaColor = 109, 109, 109, 255;
-            storyText.color = LindaColor;
+            imageScript.color = LindaColor;
             ColorNum = 0;
         }
 
@@ -252,6 +294,8 @@ public class InkController : MonoBehaviour
         // Make the button expand to fit the text
         HorizontalLayoutGroup layoutGroup = choice.GetComponent<HorizontalLayoutGroup>();
         layoutGroup.childForceExpandHeight = false;
+
+        choiceThere = true;
 
         return choice;
     }

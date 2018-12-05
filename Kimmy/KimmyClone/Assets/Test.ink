@@ -353,26 +353,26 @@ Dana's Mom: You’ll do fine.
 
 ===Downtown===
     You see Anthony and Amber talking in the corner, and Jimmy reading by the bus stop.
-    + [Let's go talk to Anthony and Amber!] -> AnthonyAndAmber
-    + [Let's go talk to Jimmy!] -> Jimmy
+    + [Talk to Anthony and Amber!] -> AnthonyAndAmber
+    + [Talk to Jimmy!] -> Jimmy
     + [Map] -> WhereToGoNext
 
 ===Home===
     You see Dana's Mom standing by the mailbox, and Harold standing in front of Dana's house.
-    + [Let's go talk to Harold!] -> Harold
+    + [Talk to Harold!] -> Harold
     + [Let's go see your mom Dana!] -> Mom
     + [Map] -> WhereToGoNext
 
 ===KimmysHouse===
     You see Dean hanging out of the store window, and Donna in front of Kimmy's house.
-    + [Let's go to the Store!] ->StoreClerkIntro
-    + [Let's go talk to Donna!] -> Donna
+    + [To the Store!] ->StoreClerkIntro
+    + [Talk to Donna!] -> Donna
     + [Map] -> WhereToGoNext
 
 ===PlayGround===
     You see Linda by the swings and Janey by the sandbox.
-    + [Let's go talk to Janey!] ->Janey
-    + [Let's go talk to Linda!] -> Linda
+    + [Talk to Janey!] ->Janey
+    + [Talk to Linda!] -> Linda
     + [Map] ->WhereToGoNext
 
 ===WhereToGoNext===
