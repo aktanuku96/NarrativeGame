@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
+using UnityEngine.SceneManagement;
 
 public class InkController : MonoBehaviour
 {
+    public Color NarrativeColor;
     public Color DanaColor;
     public Color DanaMomColor;
     public Color KimmyColor;
@@ -36,6 +38,7 @@ public class InkController : MonoBehaviour
 
 
     private bool choiceThere;
+    private bool firstPlay = true;
     //private string text;
     public int ColorNum = 0;
 
@@ -62,7 +65,7 @@ public class InkController : MonoBehaviour
         if(!choiceThere){
 
             ShowChoices();
-
+            firstPlay = false;
         }
 
         //Debug.Log("Did you get here?");
@@ -146,6 +149,10 @@ void addText()
         {
             ColorNum = 12;
         }
+        
+        else{
+            ColorNum = 0;
+        }
 
         CreateContentView(text);
 
@@ -156,6 +163,7 @@ void addText()
 
         if (story.currentChoices.Count > 0)
         {
+
             //choiceThere = true;
             //if (choiceThere)
             //{
@@ -186,6 +194,13 @@ void addText()
                 //}
             }
         }
+        else if (!firstPlay && story.currentChoices.Count < 0){
+            Button choice = CreateChoiceView("Play Again?");
+            choice.onClick.AddListener(delegate {
+                SceneManager.LoadScene("SampleScene");
+            });
+        }
+      
     }
 
     // When we click the choice button, tell the story to choose that choice!
@@ -208,30 +223,30 @@ void addText()
         Text storyText = Instantiate(textPrefab) as Text;
         storyText.text = text;
 
-        //if(ColorNum == 0){
-        //    storyText.color = new Color(255, 255, 255);
-        //}
+        if(ColorNum == 0){
+            imageScript.color = NarrativeColor;
+        }
 
-        if (ColorNum == 1)
+        else if (ColorNum == 1)
         {
             //DanaColor = 156, 0, 255, 255;
             //storyText.color = DanaColor;
             imageScript.color = DanaColor;
             ColorNum = 0;
         }
-        if (ColorNum == 2)
+        else if (ColorNum == 2)
         {
             //DanaMomColor = 160, 112, 255, 255;
             imageScript.color = DanaMomColor;
             //ColorNum = 0;
         }
-        if (ColorNum == 3)
+        else if (ColorNum == 3)
         {
             //KimmyColor = 255, 0, 236, 255;
             imageScript.color = KimmyColor;
             ColorNum = 0;
         }
-        if (ColorNum == 4)
+        else if (ColorNum == 4)
         {
             //KimmyMomColor = 255, 143, 227, 255;
             imageScript.color = KimmyMomColor;
