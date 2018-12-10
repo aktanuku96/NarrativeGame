@@ -24,6 +24,11 @@ public class InkController : MonoBehaviour
     public AudioClip click;
     public AudioSource source;
 
+    public AudioClip backgroundMusic;
+    public AudioSource source2;
+
+    public GameObject KimmyPrefab;
+
     [SerializeField] private TextAsset _inkJsonAsset;
     [SerializeField] private Story story;
 
@@ -51,8 +56,8 @@ public class InkController : MonoBehaviour
     private void Start()
     {
         story = new Story(_inkJsonAsset.text);
-        RemoveChildren();
-
+        //RemoveChildren();
+        source2.PlayOneShot(backgroundMusic);
     }
 
     private void Update()
@@ -65,7 +70,7 @@ public class InkController : MonoBehaviour
         if(!choiceThere){
 
             ShowChoices();
-            firstPlay = false;
+
         }
 
         //Debug.Log("Did you get here?");
@@ -160,7 +165,8 @@ void addText()
 }
 
     void ShowChoices(){
-
+        
+        firstPlay = false;
         if (story.currentChoices.Count > 0)
         {
 
@@ -244,6 +250,7 @@ void addText()
         {
             //KimmyColor = 255, 0, 236, 255;
             imageScript.color = KimmyColor;
+
             ColorNum = 0;
         }
         else if (ColorNum == 4)
