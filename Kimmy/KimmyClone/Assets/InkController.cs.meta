@@ -4,10 +4,19 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - inkJSONAsset: {instanceID: 0}
+  - click: {instanceID: 0}
+  - source: {instanceID: 0}
+  - backgroundMusic: {instanceID: 0}
+  - source2: {instanceID: 0}
+  - KimmyPrefab: {fileID: 1511276695133078, guid: 1842b3ad9c09c45b19127a7e2a9ca2a9,
+      type: 2}
+  - _inkJsonAsset: {instanceID: 0}
   - canvas: {instanceID: 0}
   - textPrefab: {instanceID: 0}
   - buttonPrefab: {instanceID: 0}
+  - buttonPanel: {instanceID: 0}
+  - textPanel: {instanceID: 0}
+  - imageScript: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

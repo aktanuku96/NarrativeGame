@@ -51,7 +51,9 @@ Kimmy's Mom: I don’t know many kids as responsible as you, walking Kimmy all t
 =KimmyHasSomethingToSay
 Kimmy: My… friend?
 Dana: Yes! I’d love to be friends, Kimmy. Can I come by and play with you tomorrow?
-Kimmy's Mom: I’ve been looking for a babysitter, actually. Her grandma was helping with that before, but she… well, she can’t anymore. Kimmy’s normally alright in her harness on the porch, but she’s getting a little old for that… If you’d like to play with Kimmy tomorrow, I’d be happy to pay you a quarter to keep an eye on her.
+Kimmy's Mom: I’ve been looking for a babysitter, actually. 
+Kimmy's Mom: Her grandma was helping with that before, but she… well, she can’t anymore. 
+Kimmy's Mom: Kimmy’s normally alright in her harness on the porch, but she’s getting a little old for that… If you’d like to play with Kimmy tomorrow, I’d be happy to pay you a quarter to keep an eye on her.
 
 *[Take the job!] -> DanaTakesJob
 =DanaTakesJob
@@ -98,6 +100,8 @@ Kimmy: ...!
 ->WhereToGoNext
 
 ===StoreClerkIntro===
++[You walk in and see Dean] -> HiDean
+=HiDean
 Dean: Hey, Kid.
 Dana: Hi, Dean. This is Kimmy. I’m babysitting her now.
 Dean: Well lookit that, aren’t you all grown up. You gettin’ paid?
@@ -126,6 +130,8 @@ Dean: Bye bye girls. Have fun.
 +[Map]->WhereToGoNext
 
 ===AnthonyAndAmber===
++[You go over and say hi to Anthony and Amber] -> HiTwo
+=HiTwo
 Dana: Hey Anthony.
 Anthony: Hi Dana. It’s so weird seeing you outside of school, haha.
 Amber: I’m Amber!
@@ -148,6 +154,8 @@ Amber: Am not!
 +[Map] -> WhereToGoNext
 
 ===Donna===
++[You walk over and say hi to Donna] -> HiDonna
+=HiDonna
 Kimmy: Hi Donna.
 Donna: What happened, Kimmy? Did you untie yourself from the porch again?
 Kimmy: ...
@@ -172,6 +180,8 @@ Donna: Oh, thanks. They’re new. Anyways, I wanna play a new game.
 +[Map] -> WhereToGoNext
 
 ===Harold===
++[You walk over and say hi to Harold] -> HiHarold
+=HiHarold
 Kimmy: Hi Harold, play a game with us.
 Harold: You aren’t my boss.
 Kimmy: You’re always asking me to play though…
@@ -198,6 +208,8 @@ Harold: Ok, ok.
 +[Map] -> WhereToGoNext
 
 ===Janey===
++[You walk over and say hi to Janey] -> HiJaney
+=HiJaney
 Dana: Hey Janey, how are you?
 Janey: You know the Grenada movie theatre? I got a summer job there. I started last week.
 Kimmy: Wow… my mom took me there once...
@@ -224,6 +236,8 @@ Janey: Yeah, it’s more fun to be out with people who aren’t just teachers an
 +[Map] -> WhereToGoNext
 
 ===Jimmy===
++[You walk over and see Jimmy] -> HiJimmy
+=HiJimmy
 Jimmy: ...Hi Kimmy.
 Kimmy: Hi Jimmy…
 Dana: ...
@@ -256,6 +270,8 @@ Jimmy: What! Oh! Yes… yes please…
 +[Map] -> WhereToGoNext
 
 ===Linda===
++[You walk over and say hi to Linda] -> HiLinda
+=HiLinda
 Kimmy: Hi Linda... I haven’t seen you in a while.
 Linda: I went to visit my auntie right when school ended.
 Dana: Hi, Linda. Do you know Kimmy?
@@ -278,6 +294,8 @@ Linda: I guess so. I was playing with Donna earlier, but I could play some more.
 +[Map] -> WhereToGoNext
 
 ===Mom===
++[You see your mom] -> HiMom
+=HiMom
 Dana's Mom: What’s wrong, Dana? Aren’t you supposed to be out with Kimmy?
 Dana: Kimmy and I just wanted to stop by, mom.
 Dana's Mom: Fine, well, I think you should be out getting some exercise.
@@ -299,6 +317,8 @@ Dana: It’s ok! Kimmy, let’s run to the store and buy some game pieces! We’
 +[Map]->WhereToGoNext
 
 ===EndTheDay===
++[You walk over and say hi to Mrs. Munro] -> HiKimmysMom
+=HiKimmysMom
 Dana: Mrs. Munro? I'm here to drop Kimmy off.
 Kimmy's Mom: Welcome back, girls.
 +[Tell her how it went] -> Today

@@ -28,6 +28,73 @@ public class InkController : MonoBehaviour
     public AudioSource source2;
 
     public GameObject KimmyPrefab;
+    public GameObject DanaPrefab;
+    public GameObject DanaMomPrefab;
+    public GameObject KimmyMomPrefab;
+    public GameObject NeighborhoodPrefab;
+    public GameObject KimmysPrefab;
+
+    private Vector3 KimmyStartPos;
+    private Vector3 DanaStartPos;
+    private Vector3 DanaMomStartPos;
+    private Vector3 KimmyMomStartPos;
+    private Vector3 NeighborhoodStartPos;
+    private Vector3 KimmysStartPos;
+
+    private GameObject Kimmytemp;
+    private GameObject Danatemp;
+    private GameObject DanaMomtemp;
+    private GameObject KimmyMomtemp;
+    private GameObject Neighborhoodtemp;
+    private GameObject Kimmystemp;
+
+    private bool isPlayground;
+    private bool isKimmysHouse;
+    private bool isHome;
+    private bool isDowntown;
+    private bool isKimmysHousebeginning;
+
+    private bool visitedPlayground;
+    private bool visitedKimmys;
+    private bool visitedHome;
+    private bool visitedDowntown;
+
+    public GameObject LindaPrefab;
+    public GameObject JaneyPrefab;
+    public GameObject PlayGroundPrefab;
+
+    private GameObject Lindatemp;
+    private GameObject Janeytemp;
+    private GameObject PlayGroundtemp;
+
+    private Vector3 LindaStartPos;
+    private Vector3 JaneyStartPos;
+    private Vector3 PlaygroundStartPos;
+
+    public GameObject DeanPrefab;
+    public GameObject DonnaPrefab;
+
+    private GameObject Deantemp;
+    private GameObject Donnatemp;
+
+    private Vector3 DeanStartPos;
+    private Vector3 DonnaStartPos;
+
+    public GameObject HaroldPrefab;
+    private GameObject Haroldtemp;
+    private Vector3 HaroldStartPos;
+
+    public GameObject AnthonyandAmberPrefab;
+    public GameObject DowntownPrefab;
+    public GameObject JimmyPrefab;
+
+    private GameObject AnthonyandAmbertemp;
+    private GameObject Jimmytemp;
+    private GameObject Downtowntemp;
+
+    private Vector3 AnthonyandAmberStartPos;
+    private Vector3 JimmyStartPos;
+    private Vector3 DowntownStartPos;
 
     [SerializeField] private TextAsset _inkJsonAsset;
     [SerializeField] private Story story;
@@ -44,7 +111,7 @@ public class InkController : MonoBehaviour
 
     private bool choiceThere;
     private bool firstPlay = true;
-    //private string text;
+   
     public int ColorNum = 0;
 
     public GameObject buttonPanel;
@@ -56,9 +123,16 @@ public class InkController : MonoBehaviour
     private void Start()
     {
         story = new Story(_inkJsonAsset.text);
-        //RemoveChildren();
+      
         source2.PlayOneShot(backgroundMusic);
-    }
+
+
+        visitedPlayground = false;
+        visitedKimmys = false;
+        visitedHome = false;
+        visitedDowntown = false;
+    
+}
 
     private void Update()
     {
@@ -72,10 +146,6 @@ public class InkController : MonoBehaviour
             ShowChoices();
 
         }
-
-        //Debug.Log("Did you get here?");
-
-            
         else { return; }
      }
 
@@ -92,17 +162,14 @@ void addText()
 
         if (text.Contains("Dana:"))
         {
-            Debug.Log("Did you see Dana?");
             ColorNum = 1;
-            //DanaColor = new Color(156, 0, 255);
-            //Debug.Log("Dana");
+            
         }
 
         else if (text.Contains("Dana's Mom:"))
         {
             ColorNum = 2;
-            // DanaMomColor = new Color(160, 112, 255);
-            //Debug.Log("Mom");
+           
         }
 
         else if (text.Contains("Kimmy:"))
@@ -164,29 +231,254 @@ void addText()
     }
 }
 
+
     void ShowChoices(){
-        
-        firstPlay = false;
         if (story.currentChoices.Count > 0)
         {
-
-            //choiceThere = true;
-            //if (choiceThere)
-            //{
-            // Debug.Log("How about here?");
-            //Debug.Log(story.currentChoices.Count);
-
+        
             for (int i = 0; i < story.currentChoices.Count; i++)
             {
-                //Debug.Log(story.currentChoices.Count);
-
+            
                 Choice choice = story.currentChoices[i];
 
-                //if (!choiceThere)
-                //{
+                //This marks the beginning of the intro portion
+                if (choice.text.Contains("Talk to Mom"))
+                {
+                    Kimmytemp = Instantiate(KimmyPrefab);
+                    Danatemp = Instantiate(DanaPrefab);
+                    DanaMomtemp = Instantiate(DanaMomPrefab);
+                    Neighborhoodtemp = Instantiate(NeighborhoodPrefab);
 
-                    Button button = CreateChoiceView(choice.text.Trim());
-                    //Debug.Log(story.currentChoices.Count);
+                    isHome = true;
+
+                    KimmyStartPos = KimmyPrefab.transform.position;
+                    DanaStartPos = DanaPrefab.transform.position;
+                    DanaMomStartPos = DanaMomPrefab.transform.position;
+                    NeighborhoodStartPos = NeighborhoodPrefab.transform.position;
+                }
+
+                if (story.currentText.Contains("Oh, don’t worry. Thank you for finding Kimmy and walking her home. What's your name, dear?"))
+                {
+
+                    Neighborhoodtemp.transform.position += new Vector3(100f, 0f, 0f);
+                    isHome = false;
+                    KimmyMomtemp = Instantiate(KimmyMomPrefab);
+                    Kimmystemp = Instantiate(KimmysPrefab);
+                    KimmyMomStartPos = KimmyMomPrefab.transform.position;
+                    KimmysStartPos = KimmysPrefab.transform.position;
+                    isKimmysHousebeginning = true;
+                    //
+                }
+                else if (choice.text.Contains("It's the next day. You see Kimmy tied to the porch."))
+                {
+                   
+                    DanaMomtemp.transform.position += new Vector3(100f, 0f, 0f);
+                    KimmyMomtemp.transform.position += new Vector3(100f, 0f, 0f);
+                    Kimmytemp.transform.position += new Vector3(5f, 0f, 0f);
+
+                }
+
+                //marks the end of the intro portion and now the player can go wherever they please
+                else if (story.currentText.Contains("So Kimmy, where would you like to go now?"))
+                {
+                    Danatemp.transform.position = DanaStartPos;
+                    Kimmytemp.transform.position = KimmyStartPos;
+
+                    //is markers are used to move backgrounds off screen when in the map stage
+                    if (isKimmysHousebeginning)
+                    {
+                        Kimmystemp.transform.position += new Vector3(100f, 0f, 0f);
+                    }
+                    else if (isHome)
+                    {
+                        Neighborhoodtemp.transform.position += new Vector3(100f, 0f, 0f);
+                        Haroldtemp.transform.position += new Vector3(100f, 0f, 0f);
+                        DanaMomtemp.transform.position += new Vector3(100f, 0f, 0f);
+                    }
+
+                    else if (isPlayground)
+                    {
+                        PlayGroundtemp.transform.position += new Vector3(100f, 0f, 0f);
+                        Lindatemp.transform.position += new Vector3(100f, 0f, 0f);
+                        Janeytemp.transform.position += new Vector3(100f, 0f, 0f);
+                    }
+
+
+                    else if (isKimmysHouse)
+                    {
+                        Kimmystemp.transform.position += new Vector3(100f, 0f, 0f);
+                        Donnatemp.transform.position += new Vector3(100f, 0f, 0f);
+                        Deantemp.transform.position += new Vector3(100f, 0f, 0f);
+                    }
+
+                    else if(isDowntown){
+                        AnthonyandAmbertemp.transform.position += new Vector3(100f, 0f, 0f);
+                        Jimmytemp.transform.position += new Vector3(100f, 0f, 0f);
+                        Downtowntemp.transform.position += new Vector3(100f, 0f, 0f);
+                    }
+
+                    isHome = false;
+                    isDowntown = false;
+                    isKimmysHouse = false;
+                    isPlayground = false;
+                    isKimmysHouse = false;
+                    isKimmysHousebeginning = false;
+                }
+
+                else if (choice.text.Contains("Talk to Linda!"))
+                {
+                    if (visitedPlayground)
+                    {
+                        Lindatemp.transform.position = LindaStartPos;
+                        Janeytemp.transform.position = JaneyStartPos;
+                        PlayGroundtemp.transform.position = PlaygroundStartPos;
+                    }
+                    else
+                    {
+                        PlayGroundtemp = Instantiate(PlayGroundPrefab);
+                        Lindatemp = Instantiate(LindaPrefab);
+                        Janeytemp = Instantiate(JaneyPrefab);
+
+                        PlaygroundStartPos = PlayGroundPrefab.transform.position;
+                        LindaStartPos = LindaPrefab.transform.position;
+                        JaneyStartPos = JaneyPrefab.transform.position;
+                        visitedPlayground = true;
+                    }
+
+                    isPlayground = true;
+
+                }
+
+                else if (choice.text.Contains("Talk to Donna!"))
+                {
+                    if (visitedKimmys)
+                    {
+                        Deantemp.transform.position = DeanStartPos;
+                        Donnatemp.transform.position = DonnaStartPos;
+                        Kimmystemp.transform.position = KimmysStartPos;
+                    }
+                    else
+                    {
+                        Kimmystemp.transform.position = KimmysStartPos;
+                        Deantemp = Instantiate(DeanPrefab);
+                        Donnatemp = Instantiate(DonnaPrefab);
+
+                        DeanStartPos = DeanPrefab.transform.position;
+                        DonnaStartPos = DonnaPrefab.transform.position;
+                        visitedKimmys = true;
+                    }
+                    isKimmysHouse = true;
+
+                }
+
+                else if (choice.text.Contains("Talk to Harold!"))
+                {
+                    Neighborhoodtemp.transform.position = NeighborhoodStartPos;
+                    DanaMomtemp.transform.position = DanaMomStartPos;
+                    if (visitedHome)
+                    {
+                        Haroldtemp.transform.position = HaroldStartPos;
+                    }
+                    else
+                    {
+                        Haroldtemp = Instantiate(HaroldPrefab);
+                    }
+                    isHome = true;
+                }
+
+                else if (choice.text.Contains("Talk to Jimmy!"))
+                {
+                    if (visitedDowntown)
+                    {
+                        AnthonyandAmbertemp.transform.position = AnthonyandAmberStartPos;
+                        Jimmytemp.transform.position = JimmyStartPos;
+                        Downtowntemp.transform.position = DowntownStartPos;
+                    }
+
+                    else
+                    {
+                        AnthonyandAmbertemp = Instantiate(AnthonyandAmberPrefab);
+                        Jimmytemp = Instantiate(JimmyPrefab);
+                        Downtowntemp = Instantiate(DowntownPrefab);
+                    }
+                    isDowntown = true;
+                }
+
+
+
+                else if (choice.text.Contains("You walk over and say hi to Linda")){
+                    Janeytemp.transform.position += new Vector3(100f, 0f, 0f);
+                }
+
+                else if(choice.text.Contains("You walk over and say hi to Janey")){
+                    Lindatemp.transform.position += new Vector3(100f, 0f, 0f);
+                }
+                else if(choice.text.Contains("You walk in and see Dean")){
+                    Donnatemp.transform.position += new Vector3(100f, 0f, 0f);
+                }
+                else if(choice.text.Contains("You walk over and say hi to Donna")){
+                    Deantemp.transform.position += new Vector3(100f, 0f, 0f);
+                }
+                else if (choice.text.Contains("You see your mom"))
+                {
+                    Haroldtemp.transform.position += new Vector3(100f, 0f, 0f);
+                }
+                else if (choice.text.Contains("You walk over and say hi to Harold"))
+                {
+                    DanaMomtemp.transform.position += new Vector3(100f, 0f, 0f);
+                }
+                else if (choice.text.Contains("You walk over and see Jimmy"))
+                {
+                    AnthonyandAmbertemp.transform.position += new Vector3(100f, 0f, 0f);
+                }
+                else if (choice.text.Contains("You go over and say hi to Anthony and Amber"))
+                {
+                    Jimmytemp.transform.position += new Vector3(100f, 0f, 0f);
+                }
+
+
+
+                //End Day portion
+                else if(choice.text.Contains("You walk over and say hi to Mrs. Munro")){
+                    Kimmystemp.transform.position = KimmysStartPos;
+                    KimmyMomtemp.transform.position = KimmyMomStartPos;
+
+                }
+
+                else if(choice.text.Contains("Mom?")){
+                    DanaMomtemp.transform.position = DanaMomStartPos;
+
+                }
+
+                else if(choice.text.Contains("Walk home")){
+                    //bye to Kimmy's family
+                    KimmyMomtemp.transform.position += new Vector3(100f, 0f, 0f);
+                    Kimmytemp.transform.position += new Vector3(100f, 0f, 0f);
+
+
+                }
+
+                else if(choice.text.Contains("Talk about Kimmy's rope")){
+                    Kimmystemp.transform.position += new Vector3(100f, 0f, 0f);
+                    Danatemp.transform.position = KimmyMomStartPos;
+                    Neighborhoodtemp.transform.position = NeighborhoodStartPos;
+                }
+                else if(choice.text.Contains("Weird but okay?")){
+                    Neighborhoodtemp.transform.position += new Vector3(3f, 0f, 0f);
+                }
+                else if (choice.text.Contains("Sure..."))
+                {
+                    Neighborhoodtemp.transform.position += new Vector3(2f, 0f, 0f);
+                }
+                else if (choice.text.Contains("Worry"))
+                {
+                    Neighborhoodtemp.transform.position += new Vector3(1f, 0f, 0f);
+                }
+
+                //The end
+
+                Button button = CreateChoiceView(choice.text.Trim());
+
                     // Tell the button what to do when we press it
 
                     button.onClick.AddListener(delegate
@@ -195,16 +487,14 @@ void addText()
                         OnClickChoiceButton(choice);
 
                     });
-                    // }
+                   
 
-                //}
             }
         }
-        else if (!firstPlay && story.currentChoices.Count < 0){
-            Button choice = CreateChoiceView("Play Again?");
-            choice.onClick.AddListener(delegate {
-                SceneManager.LoadScene("SampleScene");
-            });
+
+        //restart at the end of day 1
+        else if (Input.GetKeyDown(KeyCode.Alpha1)){
+            SceneManager.LoadScene("SampleScene");
         }
       
     }
@@ -213,11 +503,6 @@ void addText()
     void OnClickChoiceButton(Choice choice)
     {
         story.ChooseChoiceIndex(choice.index);
-
-        //string text = story.Continue();
-        //text = text.Trim();
-        //CreateContentView(text);
-        //RemoveChildren();
         addText();
         choiceThere = false;
     }
@@ -225,7 +510,7 @@ void addText()
     // Creates a button showing the choice text
     void CreateContentView(string text)
     {
-        //Debug.Log("Hi are you creating content?");
+      
         Text storyText = Instantiate(textPrefab) as Text;
         storyText.text = text;
 
@@ -235,75 +520,60 @@ void addText()
 
         else if (ColorNum == 1)
         {
-            //DanaColor = 156, 0, 255, 255;
-            //storyText.color = DanaColor;
             imageScript.color = DanaColor;
             ColorNum = 0;
         }
         else if (ColorNum == 2)
         {
-            //DanaMomColor = 160, 112, 255, 255;
             imageScript.color = DanaMomColor;
-            //ColorNum = 0;
         }
         else if (ColorNum == 3)
         {
-            //KimmyColor = 255, 0, 236, 255;
             imageScript.color = KimmyColor;
 
             ColorNum = 0;
         }
         else if (ColorNum == 4)
         {
-            //KimmyMomColor = 255, 143, 227, 255;
             imageScript.color = KimmyMomColor;
             ColorNum = 0;
         }
         else if (ColorNum == 5)
         {
-            //DeanColor = 255, 79, 0, 255;
             imageScript.color = DeanColor;
             ColorNum = 0;
         }
         else if (ColorNum == 6)
         {
-            //AnthonyColor = 255, 0, 62, 255;
             imageScript.color = AnthonyColor;
             ColorNum = 0;
         }
         else if (ColorNum == 7)
         {
-            //AmberColor = 24, 132, 0, 255;
             imageScript.color = AmberColor;
             ColorNum = 0;
         }
         else if (ColorNum == 8)
         {
-            //DonnaColor = 212, 190, 0, 255;
             imageScript.color = DonnaColor;
-            //ColorNum = 0;
         }
         else if (ColorNum == 9)
         {
-            //HaroldColor = 8, 0, 176, 255;
             imageScript.color = HaroldColor;
             ColorNum = 0;
         }
         else if (ColorNum == 10)
         {
-            //JaneyColor = 0, 255, 255, 255;
             imageScript.color = JaneyColor;
             ColorNum = 0;
         }
         else if (ColorNum == 11)
         {
-            //JimmyColor = 123, 0, 3, 255;
             imageScript.color = JimmyColor;
             ColorNum = 0;
         }
         else if (ColorNum == 12)
         {
-            //LindaColor = 109, 109, 109, 255;
             imageScript.color = LindaColor;
             ColorNum = 0;
         }
@@ -346,6 +616,8 @@ void addText()
         }
 
     }
+
+  
 
 
 }
